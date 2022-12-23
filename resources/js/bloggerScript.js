@@ -71,6 +71,8 @@ const ScrollFix = function(ele, options) {
     ele.ScrollFix = sf;
     return sf;
 }
-document.querySelectorAll('.tabs-outer').forEach((e) => {
-    new ScrollFix(e,{'zIndex':999});
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.tabs-outer').forEach((e) => {
+        new ScrollFix(e,{'zIndex':999});
+    });
 });
