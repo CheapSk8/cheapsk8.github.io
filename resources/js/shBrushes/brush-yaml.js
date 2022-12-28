@@ -14,12 +14,10 @@
 
         var constants = '~ true false on off';
 
-        var regexLib = require('syntaxhighlighter-regex').commonRegExp;
-
         this.regexList = [
-            { regex: regexLib.singleLinePerlComments, css: 'comments' },      // comment
-            { regex: regexLib.doubleQuotedString, css: 'string' },        // double quoted string
-            { regex: regexLib.singleQuotedString, css: 'string' },        // single quoted string
+            { regex: SyntaxHighlighter.regexLib.singleLinePerlComments, css: 'comments' },      // comment
+            { regex: SyntaxHighlighter.regexLib.doubleQuotedString, css: 'string' },        // double quoted string
+            { regex: SyntaxHighlighter.regexLib.singleQuotedString, css: 'string' },        // single quoted string
             { regex: /^\s*([a-z0-9\._-])+\s*:/gmi, css: 'variable' },      // key
             { regex: /\s?(\.)([a-z0-9\._-])+\s?:/gmi, css: 'comments' },      // section
             { regex: /\s(@|:)([a-z0-9\._-])+\s*$/gmi, css: 'variable bold' }, // variable, reference
@@ -30,7 +28,7 @@
             { regex: new RegExp(this.getKeywords(constants), 'gmi'), css: 'constants' }      // constants
         ];
 
-        this.forHtmlScript(regexLib.phpScriptTags);
+        this.forHtmlScript(SyntaxHighlighter.regexLib.phpScriptTags);
     }
 
     Brush.prototype = new SyntaxHighlighter.Highlighter();
@@ -39,5 +37,4 @@
 
     // CommonJS
     typeof (exports) != 'undefined' ? exports.Brush = Brush : null;
-
 })();
